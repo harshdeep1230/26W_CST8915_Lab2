@@ -18,18 +18,14 @@ Each microservice  comply with the **Codebase** factor of the 12-Factor App meth
 
 ---
 
-## 📝 Reflection Questions
+## Reflection Questions
 
-### 1. What changes did you make to the order-service and product-service to comply with the Configurations and Backing Services factors?
+## Reflection Questions
+Describe what you did to the order-service and product-service to conform to the Configurations and Backing Services factors?
+To achieve the Configuration factor, I did not use hard-coded URLs and ports in the source code. I used dotenv library in the node.js environment and dotenv crate in the Rust environment to read the environment variables in a .env file during runtime. In the Backing Services, I altered the order-service to consume RabbitMQ as an attached resource by providing its connection string (with the Azure VM IP and credentials) as an environment variable rather than proving the local loopback address.
 
+## What is the rationale of relying on environment variables, as opposed to hard-coding settings in your application?
+It is portable as well as secure with the help of the environment variables. When it is hard-coded it makes it difficult to move the app to the different environments (development, staging, production) without affecting the source code and recompiling. Environment variables could be used to alter the settings of the database or broker profane. It also prevents the checking of sensitive credentials like passwords of RabbitMQ to version control.
 
-In order to meet the Configuration factor, I eliminated the hard-coded URLs and ports in the source code. I combined the dotenv library in Node.js and dotenv crate in Rust to read environment variables in a .env file at runtime. In the case of Backing Services, I modified the order-service to use RabbitMQ as an attached resource by passing its connection string (with the Azure VM IP and credentials) as an environment variable instead of demonstrating the local loopback address.
-
-
-### 2. Why is it important to use environment variables instead of hard-coding configurations in your application?
-
-It is also portable and secure with the assistance of the environment variables. Hard-coding settings results in it being hard to transfer the app between the varying environments (development, staging, production) without altering the source code and recompiling. With environment variables we may be able to modify the database or broker settings profane. It as well avoids the commitment of sensitive credentials such as passwords of RabbitMQ to version control.
-
-### 3. Why is it important to have separate repositories for each microservice? How does this help maintain independence and scalability?
-
-Factor 1: Codebase is enforced in separate repositories, which require a 1-to-1 relationship between a repository and a service. This freedom enables teams to apply varying technology stacks (such as Rust to one service and Node.js to another) without versioning interactions. It is also independent in scaling and deployment
+## What is the reason why the individual repositories of each microservice are needed? What is this useful in supporting scaling and independence?
+Factor 1 Codebase: Codebase is implemented in distinct repositories, whereby there is 1-to-1 relationship between a repository and a service. This freedom lets the teams use different technology stacks (e.g. Rust in one service and Node.js in another) without versioning interactions. It is scalable and deployable as well.
