@@ -19,8 +19,6 @@ Each microservice  comply with the **Codebase** factor of the 12-Factor App meth
 ---
 
 ## Reflection Questions
-
-## Reflection Questions
 Describe what you did to the order-service and product-service to conform to the Configurations and Backing Services factors?
 To achieve the Configuration factor, I did not use hard-coded URLs and ports in the source code. I used dotenv library in the node.js environment and dotenv crate in the Rust environment to read the environment variables in a .env file during runtime. In the Backing Services, I altered the order-service to consume RabbitMQ as an attached resource by providing its connection string (with the Azure VM IP and credentials) as an environment variable rather than proving the local loopback address.
 
