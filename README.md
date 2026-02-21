@@ -5,7 +5,7 @@
 **Course:** CST8915 - Full-stack Cloud-native Development
 
 ## Demo Video
-
+https://youtu.be/eMdVzz2MLUA
 ---
 
 ##  Service Repositories
